@@ -1,3 +1,7 @@
+library(MASS)
+library(mixgb)
+#source(paste0(getwd(),"/experiments/imputation.R"))
+library(Iscores)
 
 set.seed(1)
 
@@ -31,10 +35,20 @@ X <- data.frame(X)
 X_imp <- mice::complete(mice::mice(X_miss, m = 1, method = "sample", printFlag = FALSE))
 
 
-# drscore <- Iscores:::densityRatioScore(X = X_miss,
-#                                        Xhat = X_imp,
-#                                        num.proj = 1,
-#                                        projection.function = function(X){1:ncol(X)})
+
+imputations<-list()
+imputations[["sample"]][[1]]<-X_imp
+names(imputations)<-"sample"
+
+drscore <- Iscores:::Iscores(X.NA = X_miss,
+                             imputations=imputations,
+                             methods="sample",
+                             num.proj = 200,
+                             projection.function = NULL) #sample(1:ncol(X), size=(ncol(X)-1)) 
+
+
+
+
 
 
 X_imp <- impute_mixgb(X_miss)
