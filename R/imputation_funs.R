@@ -1,12 +1,8 @@
 
-library(dplyr)
-library(ggplot2)
-
-library(mice)
-library(mixgb)
-library(miceDRF)
-library(missForest)
-library(Iscores)
+impute_runif <- function(X) {
+  X[is.na(X)] <- runif(sum(is.na(X)))
+  X
+}
 
 nrmse <- function(X, X_imp, X_miss) {
   observed <- X[is.na(X_miss)]
@@ -14,7 +10,6 @@ nrmse <- function(X, X_imp, X_miss) {
 
   sqrt(mean((observed - imputed)^2) / var(observed))
 }
-
 
 impute_mixgb <- function(missdf, ...){
   mixgb.data <- mixgb::mixgb(data = missdf, m = 1)
@@ -50,28 +45,3 @@ impute_sample <- function(missdf) {
   imputed <- mice(missdf, m = 1, method = "sample", printFlag = FALSE)
   mice::complete(imputed)
 }
-
-
-
-
-get_score_for_method <- function(X, X_miss, X_imp, imp_fun, method) {
-
-  iscore <- miceDRF::Iscore(X = X_miss, X_imp = X_imp, multiple = TRUE, N = 50,
-                            imputation_func = imp_fun, skip_if_needed = FALSE)
-  # drscore <- Iscores:::densityRatioScore(X = X_miss, Xhat = X_imp,
-  #                                        num.proj = 1,
-  #                                        projection.function = function(X){1:ncol(X)})
-  energy_val <- as.vector(miceDRF::energy_dist(X = X, X_imp = X_imp))
-  nrmse_val <- nrmse(X, X_imp, X_miss)
-
-  data.frame(iscore = iscore, energy = energy_val, NRMSE = nrmse_val,
-             method = method)
-}
-
-
-
-
-
-
-
-

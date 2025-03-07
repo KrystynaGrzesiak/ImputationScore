@@ -1,15 +1,6 @@
 
-## example Gaussian Mixture Model
 
-library(miceDRF)
-library(MASS)
-
-set.seed(10)
-
-get_ex2_dat <- function() {
-
-  d <- 6
-  n <- 500 # for each pattern
+get_dat_ex2 <- function(d = 6, n = 500) {
 
   patterns <- cbind(diag(1, 3), matrix(0, d - 3, d - 3))
   patterns <- apply(patterns, 2, as.logical)
@@ -40,11 +31,4 @@ get_ex2_dat <- function() {
   X <- data.frame(X)
 
   list(X_miss = X_miss,  X = X)
-
 }
-
-
-# get_ex2_dat()
-#
-# saveRDS(X, "./experiments/data/X_exp2.RDS")
-# saveRDS(X_miss, "./experiments/data/X_miss_exp2.RDS")

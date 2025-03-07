@@ -32,19 +32,21 @@ X_miss[M] <- NA
 X_miss <- data.frame(X_miss)
 X <- data.frame(X)
 
-X_imp <- mice::complete(mice::mice(X_miss, m = 1, method = "sample", printFlag = FALSE))
+X_imp <- mice::complete(mice::mice(X_miss, m = 1, method = "mean", printFlag = FALSE))
 
 
 
 imputations<-list()
-imputations[["sample"]][[1]]<-X_imp
+imputations[["sample"]][[1]]<- X_imp
 names(imputations)<-"sample"
+
+imputations
 
 drscore <- Iscores:::Iscores(X.NA = X_miss,
                              imputations=imputations,
                              methods="sample",
                              num.proj = 200,
-                             projection.function = NULL) #sample(1:ncol(X), size=(ncol(X)-1)) 
+                             projection.function = NULL) #sample(1:ncol(X), size=(ncol(X)-1))
 
 
 
