@@ -4,6 +4,11 @@ impute_runif <- function(X) {
   X
 }
 
+impute_runifsq <- function(X) {
+  X[is.na(X)] <- sqrt(runif(sum(is.na(X))))
+  X
+}
+
 nrmse <- function(X, X_imp, X_miss) {
   observed <- X[is.na(X_miss)]
   imputed <- X_imp[is.na(X_miss)]

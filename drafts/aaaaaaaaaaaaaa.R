@@ -18,8 +18,8 @@ plts <- lapply(colnames(res)[1:3], function(ith) {
 (patchwork::wrap_plots(plts, 3) ) + plot_layout(guides = 'collect')
 
 
-plts <- lapply(unique(experiment_1$score), function(ith_score) {
-  experiment_1 %>%
+plts <- lapply(unique(experiment_4$score), function(ith_score) {
+  experiment_4 %>%
     filter(score == ith_score) %>%
     mutate(value = ifelse(score == "DR-I-Score", value, -value)) %>%
     group_by(score, method) %>%
