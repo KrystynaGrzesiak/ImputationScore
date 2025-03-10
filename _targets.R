@@ -19,6 +19,8 @@ tar_source()
 methods <- c("norm.nob", "DRF", "cart", "missForest", "norm.predict")
 n_reps <- 10
 
+set.seed(10)
+
 
 list(
   tar_target(imp_fun_list,
