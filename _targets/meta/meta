@@ -1,15 +1,17 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 model|stem||2cea162bc65a73ee|68e8179efc0d2f3e|808688450||t20154.5595790817s||0|rds|local|vector|||5.64|Number of logged events 2|Nonnumeric input dat
 get_DRscore|function|aa14bdc81a65f8cb|||||||||||||||
-experiment_2|stem|56f74733732834a2|27ad2b18754faec1|15b0ba9fd5196cf8|699572378||t20155.6397077059s|s1917b|1917|rds|local|vector|||2654.03||
 methods_imp|object|d7e9823d317868ea|||||||||||||||
-experiment_1|stem|060f1930c5f05feb|2cea162bc65a73ee|1aadf9e85b3ebb54|739794737||t20154.6347813364s||1907|rds|local|vector|||4.83|Number of logged events 1|object of type closure is not subsettable
 imp_fun_list|stem|f78570a8835265c7|c941b410e6b8976d|d5736b71a173df7c|-1865599560||t20157.5325527353s|s6015b|6015|rds|local|vector|||0||
+imp_fun_list_ex4|stem|e7a64702e3b72868|f56f958b2bc7bd86|6551a8e2388d9db9|756865477||t20158.3567065072s|s6193b|6193|rds|local|vector|||0||
+experiment_4|stem|3f7042e93fefe5c5|8aa56537b2a05f85|4f62fcfeff0e9597|1943097921||t20158.4715847847s|s2560b|2560|rds|local|vector|||1933.78||
+experiment_1|stem|060f1930c5f05feb|2cea162bc65a73ee|1ca6515ad46e2b87|739794737||t20158.5069525316s|s1907b|1907|rds|local|vector|||2246.14|Number of logged events 1. Number of logged events 2. Number of logged events 1. Number of logged events 2|
+experiment_2|stem|56f74733732834a2|27ad2b18754faec1|1ca6515ad46e2b87|699572378||t20158.5427447815s|s1917b|1917|rds|local|vector|||3092.16||
 n_reps|object|d516855f98da7f3d
 get_dat_ex1|function|a0c989df3c2700e3
 impute_missForest|function|4068fb203ae8e655
 get_dat_ex2|function|e6c6c3d71712a00f
-get_dat_ex4|function|5375c00d228e1825
+get_dat_ex4|function|faf2d7baee6101b7
 impute_runif|function|130d7dd80509e7f0
 nrmse|function|b757c576e088b81e
 impute_norm.nob|function|755b009fbfce520b
@@ -20,9 +22,10 @@ impute_mixgb|function|de96f0f210b4186d
 methods|object|d7e9823d317868ea
 impute_cart|function|884467dfc95b8ce1
 impute_sample|function|355e1d0a2e40878c
-methods_ex4|object|7b49a8f6a9c94c19
+methods_ex4|object|db872f06b8709d22
 impute_norm.predict|function|077b282498878dc3
 get_score_for_methods|function|36d8b5fedc15c35d
-run_experiment|function|6998da6980071efb
-imp_fun_list_ex4|stem|78030151b25d0b2f|f56f958b2bc7bd86|7ec4f7c7a19e5928|756865477||t20157.5442980359s|s6110b|6110|rds|local|vector|||0||
-experiment_4|stem|5f723440e6e24627|5265e1efdfdb48b4|17185552737b4e53|1943097921||t20157.5573156806s|s2220b|2220|rds|local|vector|||1124.72||
+run_experiment|function|ea7912df57b6f123
+data_ex1|stem|ab3a774997a0d130|34f97afcec69cebc|b7bc1a238bef65b0|-1851838643||t20158.5687087705s|s127667b|127667|rds|local|vector|||0.02||
+data_ex2|stem|49b302d0c5de3a7a|70507c6932e02c34|3bcee19f7e6b00c8|223297049||t20158.568709139s|s127941b|127941|rds|local|vector|||0.01||
+data_ex4|stem|efbdbc557ec21ece|15a9b36d98ea17ad|6e608d82a9f4af30|2053606569||t20158.5687095887s|s121852b|121852|rds|local|vector|||0.01||

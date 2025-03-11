@@ -78,7 +78,7 @@ drscore <- Iscores:::Iscores(X.NA = X_miss,
                              imputations=imputations,
                              methods=c("runif", "runifsq"),
                              num.proj = 1,
-                             projection.function = function(X){1:ncol(X)} ) #sample(1:ncol(X), size=(ncol(X)-1))
+                             projection.function = function(X){2:ncol(X)} ) #sample(1:ncol(X), size=(ncol(X)-1))
 
 
 drscore

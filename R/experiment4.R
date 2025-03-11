@@ -1,6 +1,6 @@
 
 
-get_dat_ex4 <- function(d = 3, n = 1000) {
+get_dat_ex4 <- function(d = 6, n = 2000 ) {
 
   X <- matrix(runif(n = d*n), nrow = n, ncol = d)
 
