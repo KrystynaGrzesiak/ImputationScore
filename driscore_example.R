@@ -51,6 +51,40 @@ drscore <- Iscores:::Iscores(X.NA = X_miss,
 
 
 
+### Uniform example
+
+dat<-get_dat_ex4(d = 6, n = 1000)
+X_miss<-dat$X_miss
+
+impute_runif <- function(X) {
+  X[is.na(X)] <- runif(sum(is.na(X)))
+  X
+}
+impute_runifsq <- function(X) {
+  X[is.na(X)] <- sqrt(runif(sum(is.na(X))))
+  X
+}
+
+imputations<-list()
+imputations[["runif"]][[1]]<- impute_runif(X_miss)
+imputations[["runifsq"]][[1]]<- impute_runifsq(X_miss)
+names(imputations)<-c("runif", "runifsq")
+
+
+hist(imputations[["runif"]][[1]][is.na(X_miss[,1] ), 1])
+hist(imputations[["runifsq"]][[1]][is.na(X_miss[,1] ), 1])
+
+drscore <- Iscores:::Iscores(X.NA = X_miss,
+                             imputations=imputations,
+                             methods=c("runif", "runifsq"),
+                             num.proj = 1,
+                             projection.function = function(X){1:ncol(X)} ) #sample(1:ncol(X), size=(ncol(X)-1))
+
+
+drscore
+
+
+
 
 
 X_imp <- impute_mixgb(X_miss)
