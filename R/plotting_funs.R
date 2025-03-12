@@ -33,12 +33,10 @@ draw_single_pattern <- function(X, X_miss, ith, obs_col) {
 }
 
 
-draw_pattern <- function(X, X_miss, vars = 1:3, experiment = 1, obs_col) {
+draw_pattern <- function(X, X_miss, vars = 1:3, obs_col) {
   plots_list <- lapply(vars, function(ith_var) draw_single_pattern(X, X_miss, ith_var, obs_col))
 
-  patchwork::wrap_plots(plots_list, 3) + plot_layout(guides = 'collect') + plot_annotation(
-    title = paste0("Experiment ", experiment),
-  )
+  patchwork::wrap_plots(plots_list, 3) + plot_layout(guides = 'collect')
 }
 
 
@@ -106,6 +104,8 @@ draw_uniform <- function(X, X_miss) {
 
 transform_data <- function(dat, ith_score) {
   dat %>%
+    mutate(score = ifelse(score == "I-Score", "m-I-Score", score)) %>%
+    mutate(method = ifelse(method == "DRF", "mice-DRF", method)) %>%
     filter(score == ith_score) %>%
     mutate(value = ifelse(score == "DR-I-Score", value, -value)) %>%
     group_by(score, method) %>%

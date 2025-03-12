@@ -3,7 +3,7 @@
 
 minmax <- function(x) (x - max(x))/abs(min(x) - max(x))
 
-scores <- c("I-Score", "DR-I-Score", "energy")
+scores <- c("m-I-Score", "DR-I-Score", "energy")
 
 
 ####### example 1
