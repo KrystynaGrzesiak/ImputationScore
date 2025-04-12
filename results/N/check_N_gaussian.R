@@ -26,7 +26,7 @@ N_vec <- c(1, 5, seq(10, 100, 10))
 
 
 set.seed(123)
-dat <- get_dat_ex4()
+dat <- get_dat_ex1()
 X <- dat$X_miss
 
 methods <- c("sample","DRF", "cart", "rf", "norm.nob", "norm.predict")
