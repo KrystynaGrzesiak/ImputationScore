@@ -45,9 +45,11 @@ res <- lapply(1:10, function(ith_rep) {
 
 saveRDS(res, "./results/N/resN_gaussian.RDS")
 
+res <- readRDS("./results/N/resN_gaussian.RDS")
+
 res  %>%
   bind_rows() %>% {
-    colnames(.) <- c("mice norm.predict", "mice rf", "random", "mice DRF", "mice norm.nob", "runif", "mice CART", "N", "rep")
+    colnames(.) <- c("mice norm.predict", "mice norm.nob", "mice CART", "mice rf", "runif", "random", "mice DRF", "N", "rep")
     .
   } %>%
   bind_rows() %>%
@@ -70,7 +72,7 @@ res  %>%
 
 res %>%
   bind_rows() %>% {
-    colnames(.) <- c("mice norm.predict", "mice rf", "random", "mice DRF", "mice norm.nob", "runif", "mice CART", "N", "rep")
+    colnames(.) <- c("mice norm.predict", "mice norm.nob", "mice CART", "mice rf", "runif", "random", "mice DRF", "N", "rep")
     .
   } %>%
   tidyr::gather(method, score, -N, -rep) %>%
