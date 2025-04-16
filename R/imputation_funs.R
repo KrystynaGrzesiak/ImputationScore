@@ -1,4 +1,17 @@
 
+impute_Gauss_ex<-function(X, beta=0){
+
+  X[is.na(X[,1]),1]<-beta*X[is.na(X[,1]),2] + rnorm(sum(is.na(X[,1])), sd=sqrt(1-beta^2))
+  X[is.na(X[,2]),2]<-beta*X[is.na(X[,2]),1] + rnorm(sum(is.na(X[,2])), sd=sqrt(1-beta^2))
+
+  X
+
+}
+
+
+
+
+
 impute_runif <- function(X) {
   X[is.na(X)] <- runif(sum(is.na(X)))
   X
