@@ -1,9 +1,24 @@
 
 
-get_dat_ex4 <- function(d = 6, n = 2000 ) {
+get_dat_ex4 <- function(d = 6, n = 2000, rho=0 ) {
+  
+  
+  correlation_matrix <- matrix(0, nrow = d, ncol = d)
+  for (i in 1:d) {
+    for (j in 1:d) {
+      correlation_matrix[i, j] <- rho^abs(i - j)  # Correlation decays with distance
+    }
+  }
+  
 
-  X <- matrix(runif(n = d*n), nrow = n, ncol = d)
+  #X <- matrix(runif(n = d*n), nrow = n, ncol = d)
 
+  require(MASS)  # For mvrnorm function
+  Z <- mvrnorm(n = n, mu = rep(0, d), Sigma = correlation_matrix)
+  
+  # Step 2: Transform to uniform via probability integral transform
+  X <-pnorm(Z)
+  
   vectors <- matrix(c(
     rep(0, d),
     0, 1, rep(0,d-2),
