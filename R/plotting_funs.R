@@ -5,14 +5,18 @@ library(patchwork)
 
 
 draw_boxplots <- function(dat, color_plt) {
+  scores <- c(setdiff(unique(dat[["score"]]), c("NRMSE", "energy")), "energy")
+
   plts <- lapply(scores, function(ith_score) {
+    dat <- dat %>%
+      transform_data(ith_score = ith_score)
+
     dat %>%
-      transform_data(ith_score = ith_score) %>%
       ggplot() +
       geom_boxplot(aes(x = reorder(method, mean_score), y = value), fill = color_plt) +
       # facet_wrap(~score, scales = "free") +
-      ggtitle(ith_score) +
-      theme_light() +
+      ggtitle(unique(dat$score)) +
+      theme_light(base_size  = 12) +
       theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
       scale_x_discrete(guide = guide_axis(n.dodge = 2))
   })
@@ -28,7 +32,7 @@ draw_single_pattern <- function(X, X_miss, ith, obs_col) {
     xlab(bquote(X[.(ith)])) +
     scale_fill_manual("missing", values = c(obs_col, "white")) +
     # scale_color_manual("missing", values = c("#48333F", "#CC7400")) +
-    theme_light() +
+    theme_light(base_size  = 12) +
     theme(axis.title.y = element_blank())
 }
 
@@ -63,7 +67,7 @@ draw_uniform <- function(X, X_miss) {
                    binwidth = 0.1,
                    boundary = min(X$X1)) +
     xlab(expression(X[1] ~ "|" ~ M == m[3])) +
-    theme_light() +
+    theme_light(base_size  = 12) +
     theme(axis.title.x = element_text(size = 14))
 
   plt_2 <- X %>%
@@ -78,7 +82,7 @@ draw_uniform <- function(X, X_miss) {
                    binwidth = 0.1,
                    boundary = min(X$X1)) +
     xlab(expression(X[1] ~ "|" ~ M == m[1])) +
-    theme_light() +
+    theme_light(base_size  = 12) +
     theme(axis.title.x = element_text(size = 14),
           axis.title.y = element_blank())
 
@@ -94,7 +98,7 @@ draw_uniform <- function(X, X_miss) {
                    binwidth = 0.1,
                    boundary = min(X$X1)) +
     xlab(expression(X[1] ~ "|" ~ M %in% group("{", m[1] * "," ~ m[2], "}"))) +
-    theme_light() +
+    theme_light(base_size  = 12) +
     theme(axis.title.x = element_text(size = 14),
           axis.title.y = element_blank())
 
@@ -104,12 +108,13 @@ draw_uniform <- function(X, X_miss) {
 
 transform_data <- function(dat, ith_score) {
   dat %>%
-    mutate(score = ifelse(score == "I-Score", "m-I-Score", score)) %>%
-    mutate(method = ifelse(method == "DRF", "mice-DRF", method)) %>%
     filter(score == ith_score) %>%
+    mutate(score = ifelse(score == "I-Score", "m-I-Score", score)) %>%
+    mutate(score = ifelse(score == "energy", "Full information score", score)) %>%
+    mutate(method = ifelse(method == "DRF", "mice-DRF", method)) %>%
     mutate(value = ifelse(score == "DR-I-Score", value, -value)) %>%
     group_by(score, method) %>%
-    mutate(mean_score = mean(value)) %>%
+    mutate(mean_score = mean(value, na.rm = TRUE)) %>%
     group_by(score) %>%
     mutate(value = minmax(value)) %>%
     ungroup()
