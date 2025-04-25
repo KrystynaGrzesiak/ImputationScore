@@ -4,6 +4,20 @@ impute_runif <- function(X) {
   X
 }
 
+
+impute_dep_runif <- function(X) {
+  # Transform back into Gaussian
+  Y<-X
+  Y[!is.na(X)]<-qnorm(X[!is.na(X)])
+  
+  imputed <- mice(Y, m = 1, method = "norm.nob", printFlag = FALSE)
+  Yimp<-as.matrix(mice::complete(imputed))
+  
+  Ximp<-pnorm(Yimp)
+  
+  data.frame(Ximp)
+}
+
 impute_runifsq <- function(X) {
   X[is.na(X)] <- sqrt(runif(sum(is.na(X))))
   X
