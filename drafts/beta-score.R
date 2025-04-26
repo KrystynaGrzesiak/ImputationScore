@@ -8,12 +8,12 @@ set.seed(10)
 
 
 
-get_dat_ex41 <- function(d = 6, n = 2000 ) {
+get_dat_ex41 <- function(d = 6, n = 2000, rho=0 ) {
   
   correlation_matrix <- matrix(0, nrow = d, ncol = d)
   for (i in 1:d) {
     for (j in 1:d) {
-      correlation_matrix[i, j] <- 0.7^abs(i - j)  # Correlation decays with distance
+      correlation_matrix[i, j] <- rho^abs(i - j)  # Correlation decays with distance
     }
   }
 
@@ -45,31 +45,59 @@ X <-pnorm(Z)
 }
 
 
+rho<-0
+
 # uniform dataset
-dat <- get_dat_ex41()
+dat <- get_dat_ex41(rho=rho, n=2000)
 X <- dat$X
 X_miss <- dat$X_miss
 
-# below are imputation methods that we use in uniform example
-#paste0("impute_", c("norm.nob", "DRF", "cart", "norm.predict",
-#                    "runif", "runifsq", "missForest"))
-
+if (rho==0){
 X_imp <- impute_runif(X_miss)
-
-Iscore_beta(X_miss, X_imp, multiple = TRUE, N = 20,
-            imputation_func = impute_runif, skip_if_needed = FALSE)
+Iscore_beta2(X_miss, X_imp, multiple = TRUE, N = 20,
+             imputation_func = impute_runif, skip_if_needed = FALSE)
 
 Iscore(X_miss, X_imp, multiple = TRUE, N = 20, imputation_func = impute_runif,
        skip_if_needed = FALSE)
 
+}else{
+  X_imp <- impute_dep_runif(X_miss)
+  
+  
+  Iscore_beta2(X_miss, X_imp, multiple = TRUE, N = 20,
+               imputation_func = impute_dep_runif, skip_if_needed = FALSE)
+  
+  Iscore(X_miss, X_imp, multiple = TRUE, N = 20, imputation_func = impute_dep_runif,
+         skip_if_needed = FALSE)
+  
+}
 
-imputation.norm.nob <- miceDRF:::create_mice_imputation("norm.nob")
-X_imp_norm<-imputation.norm.nob(X_miss)
 
-Iscore_beta(X_miss, X_imp_norm, multiple = TRUE, N = 20,
-            imputation_func = imputation.norm.nob, skip_if_needed = FALSE)
+##Wrong method!
+if (rho==0){
+  
+  #imputation.norm.nob <- miceDRF:::create_mice_imputation("norm.nob")
+  X_imp_norm<-impute_runifsq(X_miss)
+  
+  Iscore_beta2(X_miss, X_imp_norm, multiple = TRUE, N = 20,
+               imputation_func = impute_runifsq, skip_if_needed = FALSE)
+  
+  Iscore(X_miss, X_imp_norm, multiple = TRUE, N = 20, imputation_func = impute_runifsq,
+         skip_if_needed = FALSE)
+  
+}else{
+  
+  imputation.norm.nob <- miceDRF:::create_mice_imputation("norm.nob")
+  X_imp_norm<-imputation.norm.nob(X_miss)
+  
+  Iscore_beta2(X_miss, X_imp_norm, multiple = TRUE, N = 20,
+               imputation_func = imputation.norm.nob, skip_if_needed = FALSE)
+  
+  Iscore(X_miss, X_imp_norm, multiple = TRUE, N = 20, imputation_func = imputation.norm.nob,
+         skip_if_needed = FALSE)
+  
+}
 
-Iscore(X_miss, X_imp_norm, multiple = TRUE, N = 20, imputation_func = imputation.norm.nob,
-       skip_if_needed = FALSE)
+
 
 
