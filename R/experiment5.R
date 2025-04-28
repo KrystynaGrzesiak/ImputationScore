@@ -1,5 +1,3 @@
-
-
 # get_dat_ex5 <- function(d = 4, n = 2000 ) {
 #
 #   X <- matrix(rnorm(n = (d+2)*n), nrow = n, ncol = d+2)

@@ -1,7 +1,31 @@
 
+impute_Gauss_ex <- function(X, beta=0){
+
+  X[is.na(X[,1]),1]<-beta*X[is.na(X[,1]),2] + rnorm(sum(is.na(X[,1])), sd=sqrt(1-beta^2))
+  X[is.na(X[,2]),2]<-beta*X[is.na(X[,2]),1] + rnorm(sum(is.na(X[,2])), sd=sqrt(1-beta^2))
+
+  X
+
+}
+
+
 impute_runif <- function(X) {
   X[is.na(X)] <- runif(sum(is.na(X)))
   X
+}
+
+
+impute_dep_runif <- function(X) {
+  # Transform back into Gaussian
+  Y<-X
+  Y[!is.na(X)]<-qnorm(X[!is.na(X)])
+
+  imputed <- mice(Y, m = 1, method = "norm.nob", printFlag = FALSE)
+  Yimp<-as.matrix(mice::complete(imputed))
+
+  Ximp<-pnorm(Yimp)
+
+  data.frame(Ximp)
 }
 
 impute_runifsq <- function(X) {
