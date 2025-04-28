@@ -20,7 +20,6 @@ tar_source()
 methods <- c("norm.nob", "DRF", "cart", "missForest", "norm.predict")
 methods_ex4 <- c("norm.nob", "DRF", "cart", "norm.predict", "runif", "runifsq", "missForest")
 methods_ex5 <- c("norm.nob", "gaussian_indep")
-methods_ex6 <- c("norm.nob", "DRF", "cart", "norm.predict", "runif", "runifsq", "missForest")
 n_reps <- 10
 N <- 50
 
@@ -36,9 +35,6 @@ list(
   ),
   tar_target(imp_fun_list_ex5,
              lapply(methods_ex5, function(ith_method) get(paste0("impute_", ith_method)))
-  ),
-  tar_target(imp_fun_list_ex6,
-             lapply(methods_ex6, function(ith_method) get(paste0("impute_", ith_method)))
   ),
   # experiment 1
   tar_target(experiment_1,
@@ -62,8 +58,9 @@ list(
              run_experiment(n_reps = n_reps, get_dat_fun = "get_dat_ex5",
                             imp_fun_list = imp_fun_list_ex5,
                             methods_names = methods_ex5, N = N)),
+  # experiment 6
   tar_target(experiment_6,
-             run_experiment(n_reps = n_reps, get_dat_fun = "get_dat_ex4",
+             run_experiment(n_reps = n_reps, get_dat_fun = "get_dat_ex6",
                             imp_fun_list = imp_fun_list_ex4,
                             methods_names = methods_ex4, num.proj = 1,
                             projection.function = function(X){2:ncol(X)},
