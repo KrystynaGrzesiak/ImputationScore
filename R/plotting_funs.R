@@ -4,18 +4,18 @@ library(ggplot2)
 library(patchwork)
 
 
-draw_boxplots <- function(dat, color_plt) {
-  scores <- c(setdiff(unique(dat[["score"]]), c("NRMSE", "energy")), "energy")
+draw_boxplots <- function(dat, color_plt, scores) {
+  # scores <- c(setdiff(unique(dat[["score"]]), c("NRMSE", "energy")), "energy")
 
   plts <- lapply(scores, function(ith_score) {
-    dat <- dat %>%
+    dat_plt <- dat %>%
       transform_data(ith_score = ith_score)
 
-    dat %>%
+    dat_plt %>%
       ggplot() +
       geom_boxplot(aes(x = reorder(method, mean_score), y = value), fill = color_plt) +
       # facet_wrap(~score, scales = "free") +
-      ggtitle(unique(dat$score)) +
+      ggtitle(unique(dat_plt$score)) +
       theme_light(base_size  = 12) +
       theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
       scale_x_discrete(guide = guide_axis(n.dodge = 2))
@@ -109,7 +109,7 @@ draw_uniform <- function(X, X_miss) {
 transform_data <- function(dat, ith_score) {
   dat %>%
     filter(score == ith_score) %>%
-    mutate(score = ifelse(score == "I-Score", "m-I-Score", score)) %>%
+    mutate(score = ifelse(score == "I-Score", "energy-I-Score", score)) %>%
     mutate(score = ifelse(score == "energy", "Full information score", score)) %>%
     mutate(method = ifelse(method == "DRF", "mice-DRF", method)) %>%
     mutate(value = ifelse(score == "DR-I-Score", value, -value)) %>%
