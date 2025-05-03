@@ -20,7 +20,7 @@ tar_source()
 methods <- c("norm.nob", "DRF", "cart", "missForest", "norm.predict")
 methods_ex4 <- c("norm.nob", "DRF", "cart", "norm.predict", "runif", "runifsq", "missForest")
 methods_ex5 <- c("norm.nob", "gaussian_indep")
-methods_ex6 <- c("norm.nob", "DRF", "cart", "norm.predict", "runif", "runifsq", "missForest", "impute_dep_runif")
+methods_ex6 <- c("norm.nob", "DRF", "cart", "norm.predict", "runif", "runifsq", "missForest", "dep_runif")
 n_reps <- 10
 N <- 50
 
@@ -63,14 +63,14 @@ list(
              run_experiment(n_reps = n_reps, get_dat_fun = "get_dat_ex5",
                             imp_fun_list = imp_fun_list_ex5,
                             methods_names = methods_ex5, N = N)),
-
   # experiment 6: Dependent Uniform Example
   tar_target(experiment_6,
              run_experiment(n_reps = n_reps, get_dat_fun = "get_dat_ex6",
-                            imp_fun_list = imp_fun_list_ex4,
-                            methods_names = methods_ex4, num.proj = 1,
+                            imp_fun_list = imp_fun_list_ex6,
+                            methods_names = methods_ex6, num.proj = 1,
                             projection.function = function(X){2:ncol(X)},
                             N = N)),
+  # datasets
   tar_target(data_ex1, get_dat_ex1()),
   tar_target(data_ex2, get_dat_ex2()),
   tar_target(data_ex4, get_dat_ex4()),
