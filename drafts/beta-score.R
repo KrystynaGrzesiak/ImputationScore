@@ -1,6 +1,7 @@
 
 library(miceDRF)
 library(mice)
+library(scoringRules)
 
 targets::tar_source()
 
@@ -16,6 +17,8 @@ get_dat_ex41 <- function(d = 6, n = 2000, rho=0 ) {
       correlation_matrix[i, j] <- rho^abs(i - j)  # Correlation decays with distance
     }
   }
+
+
 
 
 
@@ -45,7 +48,29 @@ X <-pnorm(Z)
 }
 
 
-rho<-0.7
+
+# impute_runifsqM <- function(X) {
+#
+#   ###Need to define a function that imputes using information of M.
+#
+#
+#   #Problem: With projections we do not have the pattern information anymore!! (which I guess is exactly what we wanted)
+#   M<-is.na(X)*1
+#
+#   ## X_1:
+#   # pattern 1
+#   X[which(rowSums(sweep(M, 2, c(0,0,0,0,0,0), "!=")) == 0), 1] <- sqrt(runif(sum(which(rowSums(sweep(M, 2, c(0,1,0,0,0,0), "!=")) == 0))))
+#   # pattern 2
+#   X[which(rowSums(sweep(M, 2, c(0,1,0,0,0,0), "!=")) == 0), 1] <- #sqrt(runif(sum(is.na(X)))) Continue here!!
+#   # pattern 3
+#   X[is.na(X[,2]), 2] <- runif(sum(is.na(X[,2])))
+#
+#   ## X_2:
+#   # all patterns
+#   X[is.na(X[,2]), 2] <- runif(sum(is.na(X[,2])))
+# }
+
+rho<-0
 
 # uniform dataset
 dat <- get_dat_ex41(rho=rho, n=2000)
@@ -54,7 +79,7 @@ X_miss <- dat$X_miss
 
 if (rho==0){
 X_imp <- impute_runif(X_miss)
-Iscore_beta(X_miss, X_imp, multiple = TRUE, N = 20,
+Iscore_beta_v2(X_miss, X_imp, multiple = TRUE, N = 20,
              imputation_func = impute_runif, skip_if_needed = FALSE)
 
 Iscore(X_miss, X_imp, multiple = TRUE, N = 20, imputation_func = impute_runif,
@@ -79,7 +104,7 @@ if (rho==0){
   #imputation.norm.nob <- miceDRF:::create_mice_imputation("norm.nob")
   X_imp_norm<-impute_runifsq(X_miss)
 
-  Iscore_beta(X_miss, X_imp_norm, multiple = TRUE, N = 20,
+  Iscore_beta_v2(X_miss, X_imp_norm, multiple = TRUE, N = 20,
                imputation_func = impute_runifsq, skip_if_needed = FALSE)
 
   Iscore(X_miss, X_imp_norm, multiple = TRUE, N = 20, imputation_func = impute_runifsq,
