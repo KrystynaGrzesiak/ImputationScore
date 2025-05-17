@@ -56,6 +56,11 @@ impute_DRF <- function(missdf, ...){
   mice::complete(imputed)
 }
 
+impute_rf <- function(missdf, ...){
+  imputed <- mice(missdf, m = 1, method = "rf", printFlag = FALSE)
+  mice::complete(imputed)
+}
+
 impute_norm.predict <- function(missdf, ...){
   imputed <- mice(missdf, m = 1, method = "norm.predict", printFlag = FALSE)
   mice::complete(imputed)
