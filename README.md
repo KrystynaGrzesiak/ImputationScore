@@ -18,13 +18,19 @@ git clone https://github.com/KrystynaGrzesiak/ImputationScore
 cd ImputationScore
 ```
 
-2. Restore the R environment (using renv):
+2. Open R and restore the R environment (using renv):
 
 ```r
 renv::restore()
 ```
 
-3. Run the main simulation script:
+For some of the implementations Python is required. To use these functions run first:
+
+```r
+renv::use_python()
+```
+
+3. Run the targets main simulation script:
 
 ```r
 source("run.R")
