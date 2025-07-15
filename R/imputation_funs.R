@@ -125,7 +125,6 @@ make_integer_double <- function(data.frame){
 
 call_hyperimpute_fun <- function(missdf, method, ...) {
   reticulate::source_python("python/miwae_gain.py")
-  saveRDS(missdf, "dupa5.RDS")
   seed <- sample(1:100000, 1)
   column_names <- colnames(missdf)
   imputed <- hyperimpute_imp(missdf, method = method, seed = seed, ...)

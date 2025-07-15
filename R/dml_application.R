@@ -81,8 +81,6 @@ get_imputations <- function(data, methods, data_amputed, scale = F, seed, N) {
     reticulate::source_python("python/miwae_gain.py")
     imputed <- imp_fun(as.data.frame(data_amputed))
 
-    saveRDS(imputed, "dupa.RDS")
-
     score <- try({ miceDRF::Iscore(data_amputed, imputed, N = 20, multiple = TRUE,
                                    imputation_func = imp_fun, skip_if_needed = TRUE,
                                    scale = scale)})
