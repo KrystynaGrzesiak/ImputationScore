@@ -42,11 +42,9 @@ methods_ex6 <- c("norm.nob", "DRF", "cart", "norm.predict", "runif", "runifsq",
 
 # Application DML params
 application_methods <- c("missForest", "sample", "knn", "rf", "gain", "cart")
-application_methods <- c("gain", "sample")
 
 # Global params
-n_reps <- 2
-N <- 1
+n_reps <- 10
 
 
 list(
