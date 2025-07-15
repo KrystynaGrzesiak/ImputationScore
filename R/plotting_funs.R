@@ -1,14 +1,10 @@
 
-library(dplyr)
-library(ggplot2)
-library(patchwork)
-
-
 draw_boxplots <- function(dat, color_plt, scores) {
   # scores <- c(setdiff(unique(dat[["score"]]), c("NRMSE", "energy")), "energy")
 
   plts <- lapply(scores, function(ith_score) {
     dat_plt <- dat %>%
+      filter(method != "DRF") %>%
       transform_data(ith_score = ith_score)
 
     dat_plt %>%
@@ -16,7 +12,7 @@ draw_boxplots <- function(dat, color_plt, scores) {
       geom_boxplot(aes(x = reorder(method, mean_score), y = value), fill = color_plt) +
       # facet_wrap(~score, scales = "free") +
       ggtitle(unique(dat_plt$score)) +
-      theme_light(base_size  = 12) +
+      theme_light(base_size  = 14) +
       theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
       scale_x_discrete(guide = guide_axis(n.dodge = 2))
   })
@@ -44,13 +40,13 @@ draw_pattern <- function(X, X_miss, vars = 1:3, obs_col) {
 }
 
 
-wrap_experiment <- function(p1, p2) {
+wrap_experiment <- function(p1, p2, p1_w = 1, p2_w = 1.5) {
   thm <- theme(plot.title = element_text(face = 2, size = 16))
 
   top_plot <- wrap_elements(p1 + plot_annotation(title = "A", theme = thm))
   bottom_plot <- wrap_elements(p2 + plot_annotation(title = "B", theme = thm))
 
-  (top_plot / bottom_plot) + plot_layout(heights = unit(c(1, 1.5), c('null')))
+  (top_plot / bottom_plot) + plot_layout(heights = unit(c(p1_w, p2_w), c('null')))
 }
 
 draw_uniform <- function(X, X_miss) {

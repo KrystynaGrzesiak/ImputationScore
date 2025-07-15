@@ -1,31 +1,88 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-model|stem||2cea162bc65a73ee|68e8179efc0d2f3e|808688450||t20154.5595790817s||0|rds|local|vector|||5.64|Number of logged events 2|Nonnumeric input dat
-get_DRscore|function|aa14bdc81a65f8cb|||||||||||||||
-methods_imp|object|d7e9823d317868ea|||||||||||||||
-imp_fun_list|stem|f78570a8835265c7|c941b410e6b8976d|d5736b71a173df7c|-1865599560||t20157.5325527353s|s6015b|6015|rds|local|vector|||0||
-imp_fun_list_ex4|stem|e7a64702e3b72868|f56f958b2bc7bd86|6551a8e2388d9db9|756865477||t20158.3567065072s|s6193b|6193|rds|local|vector|||0||
-experiment_4|stem|3f7042e93fefe5c5|8aa56537b2a05f85|4f62fcfeff0e9597|1943097921||t20158.4715847847s|s2560b|2560|rds|local|vector|||1933.78||
-experiment_1|stem|060f1930c5f05feb|2cea162bc65a73ee|1ca6515ad46e2b87|739794737||t20158.5069525316s|s1907b|1907|rds|local|vector|||2246.14|Number of logged events 1. Number of logged events 2. Number of logged events 1. Number of logged events 2|
-experiment_2|stem|56f74733732834a2|27ad2b18754faec1|1ca6515ad46e2b87|699572378||t20158.5427447815s|s1917b|1917|rds|local|vector|||3092.16||
-n_reps|object|d516855f98da7f3d
-get_dat_ex1|function|a0c989df3c2700e3
-impute_missForest|function|4068fb203ae8e655
-get_dat_ex2|function|e6c6c3d71712a00f
-get_dat_ex4|function|faf2d7baee6101b7
-impute_runif|function|130d7dd80509e7f0
-nrmse|function|b757c576e088b81e
-impute_norm.nob|function|755b009fbfce520b
-.Random.seed|object|96aaee39c75f1ceb
-impute_runifsq|function|a02f9bdba5fe75dd
-impute_DRF|function|0f16be9d5a528c96
-impute_mixgb|function|de96f0f210b4186d
+data_ex1|stem|ab3a774997a0d130|34f97afcec69cebc|b7bc1a238bef65b0|-1851838643||t20213.3634356185s|s127667b|127667|rds|local|vector|||0.05||
+data_ex2|stem|49b302d0c5de3a7a|70507c6932e02c34|3bcee19f7e6b00c8|223297049||t20213.3634359969s|s127941b|127941|rds|local|vector|||0.03||
+data_ex4|stem|efbdbc557ec21ece|15a9b36d98ea17ad|6e608d82a9f4af30|2053606569||t20213.3634364984s|s121852b|121852|rds|local|vector|||0.03||
+data_ex5|stem|d1ca12fc48ad153b|c44ae59577191cd8|8e19b9c589713e2b|1574068454||t20213.3634367634s|s175882b|175882|rds|local|vector|||0.01||
+data_ex6|stem|fa73cabef0886db7|2eb62e4ef173c5d2|765152639c1a92bf|1466302094||t20213.3634371993s|s170676b|170676|rds|local|vector|||0.02||
+experiment_4|stem|95df95c0f12e70c3|ef027020118fee91|a4a8d5f5d95b2f14|1943097921||t20213.4102284514s|s3074b|3074|rds|local|vector|||4042.75||
+experiment_6|stem|5a82209fd72644a8|7910e5c458c4a123|c484cbeba6e9f51d|-1862632655||t20213.521242276s|s3475b|3475|rds|local|vector|||9187.13||
+experiment_1|stem|481188044c994d93|bceedc2b97ce6ff2|a2d7c024825cce5d|739794737||t20213.649039733s|s2266b|2266|rds|local|vector|||11041.67|Number of logged events 1. Number of logged events 9. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 9. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 4. Number of logged events 4. Number of logged events 9. Number of logged events 4. Number of logged events 4. Number of logged events 9|
+experiment_2|stem|9b560f64f5711cc7|7ba1c1e56bd9f2a7|a2d7c024825cce5d|699572378||t20213.7765090666s|s2274b|2274|rds|local|vector|||11013.07|Number of logged events 4. Number of logged events 3. Number of logged events 2. Number of logged events 2. Number of logged events 4. Number of logged events 4. Number of logged events 3. Number of logged events 3. Number of logged events 2. Number of logged events 2. Number of logged events 2. Number of logged events 3. Number of logged events 3. Number of logged events 2. Number of logged events 3. Number of logged events 4. Number of logged events 3. Number of logged events 3. Number of logged events 2. Number of logged events 4. Number of logged events 4. Number of logged events 3. Number of logged events 2. Number of logged events 4. Number of logged events 3. Number of logged events 4. Number of logged events 3. Number of logged events 2. Number of logged events 2. Number of logged events 2. Number of logged events 3. Number of logged events 3. Number of logged events 3. Number of logged events 2. Number of logged events 4. Number of logged events 2. Number of logged events 4. Number of logged events 4. Number of logged events 3. Number of logged events 2. Number of logged events 4. Number of logged events 4. Number of logged events 4. Number of logged events 4. Number of logged events 4. Number of logged events 9. Number of logged events 9. Number of logged events 4. Number of logged events 4. Number of logged events 9|
+experiment_4_beta|stem|718d5f2735db428f|1c1124a50d38a191|6fdae641a510c3e9|2016939443||t20220.5446885437s|s1967b|1967|rds|local|vector|||16321.19|package patchwork was built under R version 4.4.2. package mltools was built under R version 4.4.3. package gdata was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.3. package ggplot2 was built under R version 4.4.3. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.3|
+experiment_6_beta|stem|a4b35067eac1716d|0538f32ba117d470|93e1c9198f13b594|-132657347||t20220.5558406427s|s2214b|2214|rds|local|vector|||17285.44|package patchwork was built under R version 4.4.2. package mltools was built under R version 4.4.3. package gdata was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.3. package ggplot2 was built under R version 4.4.3. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.3|
+experiment_2_beta|stem|03fc79b8458b4bf1|07e0a0e2c1fb836a|72de6cab165edbd6|-1291850461||t20220.586520632s|s1490b|1490|rds|local|vector|||19935.52|package patchwork was built under R version 4.4.2. package mltools was built under R version 4.4.3. package gdata was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.3. package ggplot2 was built under R version 4.4.3. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.3|
+experiment_1_beta|stem|b341d97d67b61d3b|7795868b0447322b|72de6cab165edbd6|618102661||t20220.5917683331s|s1488b|1488|rds|local|vector|||20389.72|package patchwork was built under R version 4.4.2. package mltools was built under R version 4.4.3. package gdata was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.3. package ggplot2 was built under R version 4.4.3. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.3. Number of logged events 4. Number of logged events 4. Number of logged events 4. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5. Number of logged events 5|
+imp_fun_list_ex4|stem|a4103ff85a73d58a|4248e41aeef294ed|a3abd145006f29dd|756865477||t20284.4925636971s|s94193b|94193|rds|local|vector|||2.28|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
+imp_fun_list|stem|72dc9a8803d8f63b|993066f48941b037|263aafc53a57213b|-1865599560||t20284.4925643441s|s67479b|67479|rds|local|vector|||2.24|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
+imp_fun_list_ex5|stem|a6214f1bcef5a0d2|de0179077cc4b0c7|68851e02a4044b73|-928267995||t20284.4925660818s|s27275b|27275|rds|local|vector|||2.45|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
+imp_fun_list_ex6|stem|868d17b7fe472063|4eb392e7f3770470|e1a9fe1e83b45124|558582543||t20284.4925698528s|s107779b|107779|rds|local|vector|||2.52|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
+application_data|stem|932cece7f5098aae|736a56ce6d7ad460|2c530c1562a7fbd1|706450164||t20284.4925809121s|s107371b|107371|rds|local|vector|||4.03|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
+application_data_amputed|stem|dbc015ceff54dda6|ae17d57fbef0285f|e7a6c2b9fc2ed199|-1009628163||t20284.4926008478s|s108812b|108812|rds|local|vector|||1.44||
+experiment_5_beta|stem|66d767966fa3035a|94bed745cd216bf6|74b9b635ff87c9f4|1962317568||t20284.4942495955s|s727b|727|rds|local|vector|||116.02|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
+experiment_5|stem|92444ef46f4b42b2|61453755d9fd1ec1|d7e10491a0e62c81|711114603||t20284.5065875766s|s1082b|1082|rds|local|vector|||1182.3|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|
 methods|object|d7e9823d317868ea
-impute_cart|function|884467dfc95b8ce1
-impute_sample|function|355e1d0a2e40878c
-methods_ex4|object|db872f06b8709d22
+hyperimpute_imp|function|6af58a41b9a54c77
+compound_symmetry|function|69de8b35b3436031
+produce_MCAR|function|05b1f614a8c6543e
+block_diagonal|function|b04cd4ed65fda9f1
+beta_cluster|function|bc5bda81060110bc
+impute_Gauss_ex|function|12dce720e9212b10
+get_imputations|function|4e3cea7fdd248b18
+imputeMean|function|d89064c6121ee977
+impute_rf|function|4c8d589328bbf243
+MSE_prediction|function|014f8b2c9a8244dd
+make_integer_double|function|21c1e567b15f9228
+impute_norm.nob|function|755b009fbfce520b
+impute_missForest|function|4068fb203ae8e655
+draw_single_pattern|function|8e204422fbb9bd12
 impute_norm.predict|function|077b282498878dc3
-get_score_for_methods|function|36d8b5fedc15c35d
-run_experiment|function|ea7912df57b6f123
-data_ex1|stem|ab3a774997a0d130|34f97afcec69cebc|b7bc1a238bef65b0|-1851838643||t20158.5687087705s|s127667b|127667|rds|local|vector|||0.02||
-data_ex2|stem|49b302d0c5de3a7a|70507c6932e02c34|3bcee19f7e6b00c8|223297049||t20158.568709139s|s127941b|127941|rds|local|vector|||0.01||
-data_ex4|stem|efbdbc557ec21ece|15a9b36d98ea17ad|6e608d82a9f4af30|2053606569||t20158.5687095887s|s121852b|121852|rds|local|vector|||0.01||
+N|object|9f0cda529028d8d9
+impute_sample|function|355e1d0a2e40878c
+.Random.seed|object|3920e90fc8ab83cb
+nrmse|function|b757c576e088b81e
+compute_fdr_power|function|fa8536222b29872b
+get_res|function|d48d92259e48c418
+impute_runifsq|function|a02f9bdba5fe75dd
+impute_gaussian_indep|function|4f2d3668e99904e6
+get_dat_ex1|function|a0c989df3c2700e3
+get_dat_ex2|function|e6c6c3d71712a00f
+wrap_experiment|function|cd7abc6dedb1de8a
+impute_mean|function|362b22491f0a7f62
+get_dat_ex4|function|faf2d7baee6101b7
+get_dat_ex5|function|f0f64f9243dc50c6
+methods_ex4|object|db872f06b8709d22
+draw_uniform|function|4cc05aeb826031fb
+get_dat_ex6|function|51af33500d056048
+methods_ex5|object|7f7bc30d8a022443
+methods_ex6|object|a51bf0e0a68ed24d
+application_methods|object|1b77d64aa2d8e3de
+impute_mice|function|be4ec63abc3b436e
+impute_DRF|function|0f16be9d5a528c96
+n_reps|object|1f35528bd840b63d
+Imputers|function|a44c4ab30da28093
+impute_mixgb|function|de96f0f210b4186d
+impute_dep_runif|function|f378858e53812bf9
+generate_response|function|04808b1c013ec0c2
+threshold|function|b66f10d316d47d0d
+get_methods|function|d95deb3931e1e510
+impute_cart|function|884467dfc95b8ce1
+filterwarnings|function|2349641614aa121b
+transform_data|function|b88d02952ae2fc53
+impute_knn|function|231ecfed80b433ce
+simulate_X|function|c5b2240296f6bdf0
+impute_runif|function|130d7dd80509e7f0
+call_hyperimpute_fun|function|d38aad550ce2b82e
+logit.bypatterns|function|57f4fc11ac8d006a
+produce_MAR_MNAR|function|8338d9106e983e8a
+draw_pattern|function|31bdc7d86d213bda
+get_score_for_methods|function|9a3762d1778d0cc2
+run_beta|function|fb3f7fe2d6a6c760
+get_full_results|function|4cc6188c3a7566a3
+draw_boxplots|function|1cf1fe575283b2d1
+impute_miwae|function|5cbc6953430cab9d
+impute_gain|function|daf144f8724a97ad
+produce_NA|function|bc69bb5c33704722
+run_experiment|function|76ba6b5b1d53f788
+run_application|function|9f0581d7f7d115e9
+custom_ampute|function|9b949366ec49cf33
+results_full|stem||6a518c90f9d3012d|ce1280533a7091fb|-1997123064||t20284.5268819341s||0|rds|local|vector|||533.63|package mltools was built under R version 4.4.2. package gdata was built under R version 4.4.2. package mlr3learners was built under R version 4.4.3. package mlr3 was built under R version 4.4.3. package data.table was built under R version 4.4.3. package glmnet was built under R version 4.4.2. package DoubleML was built under R version 4.4.3. package mvtnorm was built under R version 4.4.3. package ranger was built under R version 4.4.2. package mice was built under R version 4.4.3. package missForest was built under R version 4.4.2. package patchwork was built under R version 4.4.2. package dplyr was built under R version 4.4.2. package tarchetypes was built under R version 4.4.3. package targets was built under R version 4.4.2|Assertion on levelsdatatarget failed Must be a permutation of set 0,1, but has extra elements 0.12307146191597,0.133412420749664,0.150687009096146,0.184429958462715,0.184619843959808,0.185889959335327,0.187808871269226,0.191547051072121,0.198475137352943,0.199545338749886,0.202123776078224,0.202515289187431,0.206727370619774,0.206816256046295,0.211691901087761,0.217264041304588,0.218939810991287,0.220343098044395,0.220391258597374,0.223399057984352,0.224553063511848,0.225399106740952,0.226382568478584,0.226769238710403,0.227687805891037,0.227994620800018,0.228206232190132,0.233274757862091,0.233960211277008,0.236357107758522,0.243692800402641,0.244677647948265,0.245434403419495,0.251682162284851,0.251731008291245,0.251929879188538,0.25321227312088,0.256818801164627,0.257736831903458,0.258962959051132,0.262757301330566,0.263806283473969,0.264969497919083,0.265088200569153,0.268485367298126,0.268836617469788,0.269207030534744,0.269794195890427,0.270677417516708,0.27103716135025,0.272137463092804,0.272292643785477,0.273427903652191,0.273812294006348,0.27518430352211,0.275368332862854,0.276149719953537,0.276214361190796,0.277348101139069,0.277969598770142,0.27801650762558,0.278259009122849,0.279153287410736,0.280373305082321,0.280826091766357,0.281835675239563,0.282649338245392,0.282879531383514,0.284813523292542,0.284823000431061,0.285260736942291,0.286224544048309,0.286476969718933,0.287061184644699,0.287450224161148,0.288010150194168,0.288075506687164,0.288561433553696,0.28947240114212,0.290207982063293,0.291253060102463,0.292070925235748,0.292097151279449,0.292725592851639,0.294423431158066,0.294840663671494,0.295301973819733,0.296093553304672,0.296129077672958,0.297052621841431,0.298959702253342,0.299224615097046,0.300433546304703,0.303196996450424,0.30344158411026,0.304079711437225,0.304262161254883,0.30

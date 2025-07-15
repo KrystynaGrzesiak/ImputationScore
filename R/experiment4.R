@@ -19,4 +19,3 @@ get_dat_ex4 <- function(d = 6, n = 2000 ) {
 
   list(X_miss = as.data.frame(X_miss),  X = as.data.frame(X))
 }
-

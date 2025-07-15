@@ -3,11 +3,8 @@ impute_Gauss_ex <- function(X, beta=0){
 
   X[is.na(X[,1]),1]<-beta*X[is.na(X[,1]),2] + rnorm(sum(is.na(X[,1])), sd=sqrt(1-beta^2))
   X[is.na(X[,2]),2]<-beta*X[is.na(X[,2]),1] + rnorm(sum(is.na(X[,2])), sd=sqrt(1-beta^2))
-
   X
-
 }
-
 
 impute_runif <- function(X) {
   X[is.na(X)] <- runif(sum(is.na(X)))
@@ -66,12 +63,22 @@ impute_norm.nob <- function(missdf, ...){
   mice::complete(imputed)
 }
 
+impute_rf <- function(missdf, ...){
+  imputed <- mice(missdf, m = 1, method = "rf", printFlag = FALSE)
+  mice::complete(imputed)
+}
+
 impute_missForest <- function(missdf) {
   missForest::missForest(xmis = missdf)$ximp
 }
 
 impute_sample <- function(missdf) {
   imputed <- mice(missdf, m = 1, method = "sample", printFlag = FALSE)
+  mice::complete(imputed)
+}
+
+impute_mice <- function(missdf) {
+  imputed <- mice(missdf, m = 1, printFlag = FALSE)
   mice::complete(imputed)
 }
 
@@ -85,41 +92,44 @@ impute_gaussian_indep <- function(X) {
   X
 }
 
-# impute_gaussian_corr <- function(X, rho = 0.7) {
-#
-#   n <- nrow(X)
-#   p <- ncol(X)
-#
-#   # Sigma <- matrix(rho, nrow = p, ncol = p)
-#   # diag(Sigma) <- 1
-#
-#   Sigma <- diag(p)
-#   Sigma[1, 2] <- rho
-#   Sigma[2, 1] <- rho
-#
-#   X_imp <- X
-#   print("AAa")
-#   for (i in 1:n) {
-#     missing_idx <- which(is.na(X[i, ]))
-#     observed_idx <- which(!is.na(X[i, ]))
-#
-#     if (length(missing_idx) == 0) next
-#
-#     mu_obs <- rep(0, length(observed_idx))
-#     mu_mis <- rep(0, length(missing_idx))
-#
-#     Sigma_oo <- Sigma[observed_idx, observed_idx, drop = FALSE]
-#     Sigma_mo <- Sigma[missing_idx, observed_idx, drop = FALSE]
-#     Sigma_mm <- Sigma[missing_idx, missing_idx, drop = FALSE]
-#
-#     x_obs <- X[i, observed_idx]
-#
-#     cond_mean <- mu_mis + Sigma_mo %*% solve(Sigma_oo, x_obs - mu_obs)
-#     cond_cov <- Sigma_mm - Sigma_mo %*% solve(Sigma_oo, t(Sigma_mo))
-#
-#     X_imp[i, missing_idx] <- rmvnorm(1, mean = cond_mean, sigma = cond_cov)
-#   }
-#
-#   X_imp
-# }
 
+impute_knn <- function(X) {
+  multiUS::KNNimp(X, k = 10, scale = TRUE, meth = "weighAvg", distData = NULL)
+}
+
+
+
+reticulate::source_python("python/miwae_gain.py")
+
+make_integer_double <- function(data.frame){
+
+  for (i in 1:ncol(data.frame)){
+    if (is.integer(data.frame[[i]])){
+      data.frame[[i]] <- as.double(data.frame[[i]])
+    }
+  }
+
+  return(data.frame)
+
+}
+
+call_hyperimpute_fun <- function(missdf, method, ...) {
+  reticulate::source_python("python/miwae_gain.py")
+  saveRDS(missdf, "dupa5.RDS")
+  seed <- sample(1:100000, 1)
+  column_names <- colnames(missdf)
+  imputed <- hyperimpute_imp(missdf, method = method, seed = seed, ...)
+  if(is.null(imputed)) stop("Internal error. Function returned NULL")
+  colnames(imputed) <- column_names
+  imputed
+}
+
+impute_miwae <- function(missdf, ...){
+  missdf <- make_integer_double(missdf)
+  call_hyperimpute_fun(missdf, method = "miwae", ...)
+}
+
+impute_gain <- function(missdf, ...){
+  missdf <- make_integer_double(missdf)
+  call_hyperimpute_fun(missdf, method = "gain", ...)
+}
